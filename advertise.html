@@ -165,31 +165,7 @@
             box-shadow: 0 6px 16px rgba(84,119,146,0.25);
         }
 
-        /* ── Budget Slider ── */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 6px;
-            border-radius: 6px;
-            background: linear-gradient(90deg, #547792, #1A3263);
-            outline: none;
-            cursor: pointer;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid #547792;
-            box-shadow: 0 2px 8px rgba(84,119,146,0.3);
-            cursor: pointer;
-            transition: box-shadow 0.2s;
-        }
-        input[type="range"]::-webkit-slider-thumb:hover {
-            box-shadow: 0 0 0 6px rgba(84,119,146,0.15);
-        }
+
 
         /* ── Upload Zone ── */
         .upload-zone {
@@ -464,7 +440,7 @@
                         <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">3</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Campaign Details</h2>
-                            <p class="text-sm text-gray-500">Set your duration and budget</p>
+                            <p class="text-sm text-gray-500">Choose your campaign duration</p>
                         </div>
                     </div>
 
@@ -479,19 +455,7 @@
                         <p class="text-xs text-red-500 mt-2 hidden" id="durError">Please select a duration.</p>
                     </div>
 
-                    <!-- Budget Slider -->
-                    <div class="mb-2">
-                        <div class="flex justify-between items-center mb-3">
-                            <label class="text-sm font-semibold text-gray-700">Monthly Budget</label>
-                            <span class="text-primary font-bold text-lg" id="budgetDisplay">₹27,500</span>
-                        </div>
-                        <input type="range" id="budgetSlider" min="5000" max="50000" step="500" value="27500"
-                               oninput="updateBudget(this.value)">
-                        <div class="flex justify-between text-xs text-gray-400 mt-2">
-                            <span>₹5,000</span>
-                            <span>₹50,000+</span>
-                        </div>
-                    </div>
+
 
                     <div class="flex gap-3 mt-8">
                         <button onclick="goToStep(2)" class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
@@ -601,10 +565,7 @@
                             <span class="text-gray-500 text-sm font-medium">Duration</span>
                             <span class="font-bold text-gray-900" id="sum-duration">—</span>
                         </div>
-                        <div class="summary-row">
-                            <span class="text-gray-500 text-sm font-medium">Monthly Budget</span>
-                            <span class="font-bold text-gray-900" id="sum-budget">—</span>
-                        </div>
+
                         <div class="summary-row">
                             <span class="text-gray-500 text-sm font-medium">Brand Name</span>
                             <span class="font-bold text-gray-900" id="sum-brand">—</span>
@@ -693,7 +654,6 @@
             locations: [],
             reach: 0,
             duration: null,
-            budget: 27500,
         };
 
         // ── Step Navigation ────────────────────────────────────
@@ -842,13 +802,12 @@
         // ── Step 5: Summary ────────────────────────────────────
         function populateSummary() {
             const months = state.duration || 1;
-            const totalCost = state.budget * months;
+            const totalCost = state.packagePrice * months;
             const totalReach = state.reach * 30 * months;
 
             document.getElementById('sum-package').textContent   = state.packageLabel || '—';
             document.getElementById('sum-locations').textContent = state.locations.join(', ') || '—';
             document.getElementById('sum-duration').textContent  = state.duration ? state.duration + ' Month' + (state.duration > 1 ? 's' : '') : '—';
-            document.getElementById('sum-budget').textContent    = '₹' + state.budget.toLocaleString('en-IN') + '/month';
             document.getElementById('sum-brand').textContent     = document.getElementById('brandName').value || '—';
             document.getElementById('sum-headline').textContent  = document.getElementById('headline').value || '—';
             document.getElementById('sum-reach').textContent     = '~' + totalReach.toLocaleString('en-IN') + '+ views';
@@ -858,7 +817,7 @@
         // ── Launch Campaign ────────────────────────────────────
         function launchCampaign() {
             const months = state.duration || 1;
-            const totalCost = state.budget * months;
+            const totalCost = state.packagePrice * months;
             const totalReach = state.reach * 30 * months;
 
             // Fill success screen
@@ -897,9 +856,6 @@
                 setTimeout(() => dot.remove(), 2500);
             }
         }
-
-        // ── Init slider UI ─────────────────────────────────────
-        updateBudget(27500);
     </script>
 </body>
 </html>
