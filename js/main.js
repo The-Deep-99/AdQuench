@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate-fade-in-down');
         });
     }
 
@@ -50,71 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ========================================
-    // Form Validation and Submission
-    // ========================================
-    const customerForm = document.getElementById('customerForm');
-    const advertiserForm = document.getElementById('advertiserForm');
-    const successModal = document.getElementById('successModal');
-
-    // Customer Form Handler
-    if (customerForm) {
-        customerForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = this.querySelector('[name="name"]').value.trim();
-            const email = this.querySelector('[name="email"]').value.trim();
-            const message = this.querySelector('[name="message"]').value.trim();
-            
-            if (!name || !email || !message) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            showModal();
-            this.reset();
-        });
-    }
-
-    // Advertiser Form Handler
-    if (advertiserForm) {
-        advertiserForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const company = this.querySelector('[name="company"]').value.trim();
-            const email = this.querySelector('[name="email"]').value.trim();
-            const package = this.querySelector('[name="package"]').value;
-            
-            if (!company || !email || !package) {
-                showNotification('Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            showModal();
-            this.reset();
-        });
-    }
-
-    // ========================================
-    // Modal Functions
-    // ========================================
-    function showModal() {
-        if (successModal) {
-            successModal.classList.remove('hidden');
-            successModal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-    }
+    // SUCCESS MODAL is now handled by Formspree's redirection or can be triggered if using AJAX.
+    // However, to keep it simple and reliable as requested ("end to end functionality"), 
+    // we'll let Formspree handle the submission. 
+    // If the user wants to stay on the page, we could use Fetch, but for now, standard POST is safer.
 
     window.closeModal = function() {
         if (successModal) {
@@ -212,14 +152,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ========================================
-    // Kiosk Cards Interaction
+    // Interactive Map (Leaflet.js)
     // ========================================
-    const kioskCards = document.querySelectorAll('.kiosk-card');
-    kioskCards.forEach(card => {
-        card.addEventListener('click', () => {
-            showNotification('Location details coming soon!', 'info');
+    const mapElement = document.getElementById('map');
+    if (mapElement && typeof L !== 'undefined') {
+        // Center on Mumbai as a sample high-traffic location
+        const map = L.map('map', {
+            scrollWheelZoom: false
+        }).setView([19.0760, 72.8777], 12);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        }).addTo(map);
+
+        // Custom Kiosk Icon
+        const kioskIcon = L.divIcon({
+            className: 'custom-div-icon',
+            html: "<div style='background-color:#547792; height:30px; width:30px; border-radius:50%; border:3px solid white; box-shadow:0 0 15px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center;'><i class='fas fa-tint' style='color:white; font-size:14px;'></i></div>",
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
         });
-    });
+
+        const kiosks = [
+            { pos: [19.1176, 72.8481], name: "Andheri West Station", users: "5,000+" },
+            { pos: [19.0178, 72.8478], name: "Dadar TT Circle", users: "8,000+" },
+            { pos: [18.9218, 72.8347], name: "Gateway of India", users: "12,000+" },
+            { pos: [19.0607, 72.8362], name: "Bandra Linking Road", users: "7,000+" },
+            { pos: [19.1351, 72.9149], name: "Powai Hiranandani", users: "4,000+" }
+        ];
+
+        kiosks.forEach(k => {
+            L.marker(k.pos, { icon: kioskIcon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="padding: 10px;">
+                        <h4 style="font-weight:bold; color:#1A3263; margin-bottom:5px;">${k.name}</h4>
+                        <p style="font-size:12px; color:#666;">Serving ${k.users} users daily</p>
+                        <hr style="margin:8px 0; border:0; border-top:1px solid #eee;">
+                        <span style="color:#547792; font-weight:600; font-size:12px;">Status: Online</span>
+                    </div>
+                `);
+        });
+    }
 
     // ========================================
     // Button Click Handlers

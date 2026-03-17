@@ -36,7 +36,15 @@
    Gradient Backgrounds & Text
    ======================================== */
 .gradient-bg {
-    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    background: linear-gradient(135deg, var(--gradient-start) 40%, var(--gradient-end) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .gradient-bg-soft {
@@ -354,9 +362,31 @@
 }
 
 .glass-dark {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   Map Customizations
+   ======================================== */
+.leaflet-container {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 16px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.custom-div-icon {
+    background: none !important;
+    border: none !important;
+}
+
+#map {
+    width: 100%;
+    z-index: 10;
 }
 
 /* ========================================
