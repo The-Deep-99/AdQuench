@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Start your advertising campaign with AdQuench. Reach thousands of customers through our smart water kiosk network across Mumbai.">
+    <meta name="description"
+        content="Start your advertising campaign with AdQuench. Reach thousands of customers through our smart water kiosk network across Mumbai.">
     <title>Start Your Campaign – AdQuench</title>
 
     <!-- Tailwind CSS CDN -->
@@ -38,6 +40,7 @@
             justify-content: center;
             gap: 0;
         }
+
         .step-dot {
             width: 44px;
             height: 44px;
@@ -55,17 +58,20 @@
             z-index: 2;
             flex-shrink: 0;
         }
+
         .step-dot.active {
             background: linear-gradient(135deg, #547792, #1A3263);
             border-color: #547792;
             color: white;
-            box-shadow: 0 0 0 5px rgba(84,119,146,0.18);
+            box-shadow: 0 0 0 5px rgba(84, 119, 146, 0.18);
         }
+
         .step-dot.done {
             background: linear-gradient(135deg, #10b981, #059669);
             border-color: #10b981;
             color: white;
         }
+
         .step-line {
             height: 3px;
             width: 60px;
@@ -73,12 +79,21 @@
             transition: background 0.4s ease;
             flex-shrink: 0;
         }
+
         .step-line.done {
             background: linear-gradient(90deg, #10b981, #059669);
         }
+
         @media (max-width: 640px) {
-            .step-line { width: 28px; }
-            .step-dot { width: 36px; height: 36px; font-size: 13px; }
+            .step-line {
+                width: 28px;
+            }
+
+            .step-dot {
+                width: 36px;
+                height: 36px;
+                font-size: 13px;
+            }
         }
 
         /* ── Package Cards ── */
@@ -91,17 +106,20 @@
             position: relative;
             background: white;
         }
+
         .pkg-card:hover {
             border-color: #547792;
-            background: rgba(84,119,146,0.04);
+            background: rgba(84, 119, 146, 0.04);
             transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(84,119,146,0.12);
+            box-shadow: 0 16px 36px rgba(84, 119, 146, 0.12);
         }
+
         .pkg-card.selected {
             border-color: #547792;
-            background: rgba(84,119,146,0.07);
-            box-shadow: 0 0 0 4px rgba(84,119,146,0.15);
+            background: rgba(84, 119, 146, 0.07);
+            box-shadow: 0 0 0 4px rgba(84, 119, 146, 0.15);
         }
+
         .pkg-card .popular-badge {
             position: absolute;
             top: -1px;
@@ -127,10 +145,12 @@
             transition: all 0.25s ease;
             background: white;
         }
+
         .loc-check:hover {
             border-color: #547792;
-            background: rgba(84,119,146,0.04);
+            background: rgba(84, 119, 146, 0.04);
         }
+
         .loc-check input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -138,9 +158,10 @@
             cursor: pointer;
             flex-shrink: 0;
         }
+
         .loc-check.checked {
             border-color: #547792;
-            background: rgba(84,119,146,0.07);
+            background: rgba(84, 119, 146, 0.07);
         }
 
         /* ── Duration Radio Buttons ── */
@@ -157,12 +178,17 @@
             color: #6b7280;
             font-size: 14px;
         }
-        .dur-btn:hover { border-color: #547792; color: #547792; }
+
+        .dur-btn:hover {
+            border-color: #547792;
+            color: #547792;
+        }
+
         .dur-btn.active {
             border-color: #547792;
             background: linear-gradient(135deg, #547792, #1A3263);
             color: white;
-            box-shadow: 0 6px 16px rgba(84,119,146,0.25);
+            box-shadow: 0 6px 16px rgba(84, 119, 146, 0.25);
         }
 
 
@@ -177,9 +203,11 @@
             transition: all 0.3s ease;
             background: #f9fafb;
         }
-        .upload-zone:hover, .upload-zone.dragover {
+
+        .upload-zone:hover,
+        .upload-zone.dragover {
             border-color: #547792;
-            background: rgba(84,119,146,0.06);
+            background: rgba(84, 119, 146, 0.06);
         }
 
         /* ── Summary Card ── */
@@ -190,15 +218,18 @@
             padding: 12px 0;
             border-bottom: 1px solid #f3f4f6;
         }
-        .summary-row:last-child { border-bottom: none; }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
 
         /* ── Reach Pill ── */
         .reach-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, rgba(84,119,146,0.12), rgba(26,50,99,0.08));
-            border: 1px solid rgba(84,119,146,0.25);
+            background: linear-gradient(135deg, rgba(84, 119, 146, 0.12), rgba(26, 50, 99, 0.08));
+            border: 1px solid rgba(84, 119, 146, 0.25);
             border-radius: 999px;
             padding: 10px 22px;
             font-weight: 700;
@@ -210,10 +241,21 @@
             display: none;
             animation: fadeInSlide 0.4s ease;
         }
-        .step-section.active { display: block; }
+
+        .step-section.active {
+            display: block;
+        }
+
         @keyframes fadeInSlide {
-            from { opacity: 0; transform: translateY(18px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ── Success screen ── */
@@ -221,21 +263,34 @@
             display: none;
             animation: fadeInSlide 0.5s ease;
         }
-        #successScreen.active { display: block; }
+
+        #successScreen.active {
+            display: block;
+        }
 
         /* ── Confetti dots ── */
         @keyframes confettiFall {
-            0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(80px) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(80px) rotate(360deg);
+                opacity: 0;
+            }
         }
+
         .confetti-dot {
             position: absolute;
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             border-radius: 2px;
             animation: confettiFall 1.5s ease forwards;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- ── Navigation ── -->
@@ -248,10 +303,19 @@
                     </div>
                     <span class="text-2xl font-bold gradient-text">AdQuench</span>
                 </a>
-                <a href="index.html" class="flex items-center gap-2 text-gray-600 hover:text-primary font-medium transition text-sm">
-                    <i class="fas fa-arrow-left"></i>
-                    <span class="hidden sm:inline">Back to Home</span>
-                </a>
+                <!-- Session info injected by JS -->
+                <div class="flex items-center gap-3" id="navSession">
+                    <div
+                        class="hidden sm:flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5">
+                        <i class="fas fa-user-circle text-primary text-sm"></i>
+                        <span class="text-primary font-semibold text-sm" id="navUserName">…</span>
+                    </div>
+                    <button onclick="logout()"
+                        class="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-red-500 border-2 border-gray-200 hover:border-red-300 px-3 py-1.5 rounded-xl transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="hidden sm:inline">Logout</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -262,7 +326,8 @@
 
             <!-- Hero Header -->
             <div class="text-center mb-10">
-                <div class="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4 border border-primary/20">
+                <div
+                    class="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-4 border border-primary/20">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                     <span class="text-primary font-semibold text-sm">Quick Setup · No Long-Term Contracts</span>
                 </div>
@@ -289,7 +354,9 @@
             <div class="step-section active" id="step1">
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">1</div>
+                        <div
+                            class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                            1</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Choose Your Package</h2>
                             <p class="text-sm text-gray-500">Select the advertising option that fits your goals</p>
@@ -298,9 +365,11 @@
 
                     <div class="grid sm:grid-cols-2 gap-4" id="packageGrid">
                         <!-- Bottle Advertising -->
-                        <div class="pkg-card" data-pkg="bottle" data-price="5000" data-label="Bottle Advertising" onclick="selectPackage(this)">
+                        <div class="pkg-card" data-pkg="bottle" data-price="5000" data-label="Bottle Advertising"
+                            onclick="selectPackage(this)">
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-bottle-water text-blue-600 text-lg"></i>
                                 </div>
                                 <div>
@@ -308,13 +377,16 @@
                                     <span class="text-primary font-semibold text-sm">From ₹5,000/month</span>
                                 </div>
                             </div>
-                            <p class="text-gray-500 text-sm">Your brand on eco-friendly water bottles distributed at kiosks</p>
+                            <p class="text-gray-500 text-sm">Your brand on eco-friendly water bottles distributed at
+                                kiosks</p>
                         </div>
 
                         <!-- Kiosk Display -->
-                        <div class="pkg-card" data-pkg="kiosk" data-price="15000" data-label="Kiosk Display" onclick="selectPackage(this)">
+                        <div class="pkg-card" data-pkg="kiosk" data-price="15000" data-label="Kiosk Display"
+                            onclick="selectPackage(this)">
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-desktop text-green-600 text-lg"></i>
                                 </div>
                                 <div>
@@ -322,13 +394,16 @@
                                     <span class="text-primary font-semibold text-sm">From ₹15,000/month</span>
                                 </div>
                             </div>
-                            <p class="text-gray-500 text-sm">Digital screens and physical branding on high-traffic kiosks</p>
+                            <p class="text-gray-500 text-sm">Digital screens and physical branding on high-traffic
+                                kiosks</p>
                         </div>
 
                         <!-- QR Code Campaigns -->
-                        <div class="pkg-card" data-pkg="qr" data-price="8000" data-label="QR Code Campaigns" onclick="selectPackage(this)">
+                        <div class="pkg-card" data-pkg="qr" data-price="8000" data-label="QR Code Campaigns"
+                            onclick="selectPackage(this)">
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-qrcode text-purple-600 text-lg"></i>
                                 </div>
                                 <div>
@@ -336,14 +411,17 @@
                                     <span class="text-primary font-semibold text-sm">From ₹8,000/month</span>
                                 </div>
                             </div>
-                            <p class="text-gray-500 text-sm">Direct customer engagement through interactive QR experiences</p>
+                            <p class="text-gray-500 text-sm">Direct customer engagement through interactive QR
+                                experiences</p>
                         </div>
 
                         <!-- Premium Package -->
-                        <div class="pkg-card" data-pkg="premium" data-price="40000" data-label="Premium Package" onclick="selectPackage(this)">
+                        <div class="pkg-card" data-pkg="premium" data-price="40000" data-label="Premium Package"
+                            onclick="selectPackage(this)">
                             <div class="popular-badge">POPULAR</div>
                             <div class="flex items-start gap-3 mb-3">
-                                <div class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div
+                                    class="w-10 h-10 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-crown text-yellow-600 text-lg"></i>
                                 </div>
                                 <div>
@@ -356,7 +434,8 @@
                     </div>
 
                     <p class="text-xs text-red-500 mt-3 hidden" id="pkgError">Please select a package to continue.</p>
-                    <button onclick="goToStep(2)" class="w-full mt-6 btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
+                    <button onclick="goToStep(2)"
+                        class="w-full mt-6 btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
                         Continue <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
@@ -368,7 +447,9 @@
             <div class="step-section" id="step2">
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">2</div>
+                        <div
+                            class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                            2</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Select Location</h2>
                             <p class="text-sm text-gray-500">Choose where you want your ads to appear</p>
@@ -377,35 +458,42 @@
 
                     <div class="space-y-3" id="locationList">
                         <label class="loc-check" id="loc-andheri">
-                            <input type="checkbox" id="chk-andheri" value="Andheri" data-reach="8000" onchange="updateLocations()">
+                            <input type="checkbox" id="chk-andheri" value="Andheri" data-reach="8000"
+                                onchange="updateLocations()">
                             <div class="flex-1">
                                 <div class="font-semibold text-gray-800">Mumbai – Andheri</div>
                                 <div class="text-sm text-gray-500">8,000 daily reach</div>
                             </div>
-                            <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">8K/day</span>
+                            <span
+                                class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">8K/day</span>
                         </label>
 
                         <label class="loc-check" id="loc-bandra">
-                            <input type="checkbox" id="chk-bandra" value="Bandra" data-reach="12000" onchange="updateLocations()">
+                            <input type="checkbox" id="chk-bandra" value="Bandra" data-reach="12000"
+                                onchange="updateLocations()">
                             <div class="flex-1">
                                 <div class="font-semibold text-gray-800">Mumbai – Bandra</div>
                                 <div class="text-sm text-gray-500">12,000 daily reach</div>
                             </div>
-                            <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">12K/day</span>
+                            <span
+                                class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">12K/day</span>
                         </label>
 
                         <label class="loc-check" id="loc-lowerparel">
-                            <input type="checkbox" id="chk-lowerparel" value="Lower Parel" data-reach="10000" onchange="updateLocations()">
+                            <input type="checkbox" id="chk-lowerparel" value="Lower Parel" data-reach="10000"
+                                onchange="updateLocations()">
                             <div class="flex-1">
                                 <div class="font-semibold text-gray-800">Mumbai – Lower Parel</div>
                                 <div class="text-sm text-gray-500">10,000 daily reach</div>
                             </div>
-                            <span class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">10K/day</span>
+                            <span
+                                class="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">10K/day</span>
                         </label>
                     </div>
 
                     <!-- Estimated Reach -->
-                    <div class="mt-6 p-4 rounded-2xl bg-gradient-to-r from-primary/8 to-secondary/5 border border-primary/15">
+                    <div
+                        class="mt-6 p-4 rounded-2xl bg-gradient-to-r from-primary/8 to-secondary/5 border border-primary/15">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-semibold text-gray-600 mb-1">Estimated Monthly Reach</p>
@@ -421,10 +509,12 @@
                     <p class="text-xs text-red-500 mt-3 hidden" id="locError">Please select at least one location.</p>
 
                     <div class="flex gap-3 mt-6">
-                        <button onclick="goToStep(1)" class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
+                        <button onclick="goToStep(1)"
+                            class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
                             <i class="fas fa-arrow-left mr-2"></i> Back
                         </button>
-                        <button onclick="goToStep(3)" class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
+                        <button onclick="goToStep(3)"
+                            class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
                             Continue <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -437,7 +527,9 @@
             <div class="step-section" id="step3">
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">3</div>
+                        <div
+                            class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                            3</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Campaign Details</h2>
                             <p class="text-sm text-gray-500">Choose your campaign duration</p>
@@ -458,10 +550,12 @@
 
 
                     <div class="flex gap-3 mt-8">
-                        <button onclick="goToStep(2)" class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
+                        <button onclick="goToStep(2)"
+                            class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
                             <i class="fas fa-arrow-left mr-2"></i> Back
                         </button>
-                        <button onclick="goToStep(4)" class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
+                        <button onclick="goToStep(4)"
+                            class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
                             Continue <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -474,7 +568,9 @@
             <div class="step-section" id="step4">
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">4</div>
+                        <div
+                            class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                            4</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Upload Your Ad</h2>
                             <p class="text-sm text-gray-500">Add your brand assets and creative details</p>
@@ -485,34 +581,41 @@
                     <div class="mb-6">
                         <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Logo</label>
                         <div class="upload-zone" id="uploadZone" onclick="document.getElementById('logoInput').click()"
-                             ondragover="event.preventDefault(); this.classList.add('dragover')"
-                             ondragleave="this.classList.remove('dragover')"
-                             ondrop="handleDrop(event)">
+                            ondragover="event.preventDefault(); this.classList.add('dragover')"
+                            ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
                             <div id="uploadPlaceholder">
-                                <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                                <div
+                                    class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
                                     <i class="fas fa-cloud-upload-alt text-primary text-2xl"></i>
                                 </div>
                                 <p class="font-semibold text-gray-700 mb-1">Click to upload or drag & drop</p>
                                 <p class="text-xs text-gray-400">PNG, JPG, SVG up to 5 MB</p>
                             </div>
                             <div id="uploadPreview" class="hidden">
-                                <img id="logoPreviewImg" src="" alt="Logo Preview" class="max-h-28 mx-auto rounded-xl object-contain">
+                                <img id="logoPreviewImg" src="" alt="Logo Preview"
+                                    class="max-h-28 mx-auto rounded-xl object-contain">
                                 <p class="text-sm text-green-600 font-semibold mt-2" id="uploadFileName"></p>
                             </div>
                         </div>
-                        <input type="file" id="logoInput" class="hidden" accept="image/*" onchange="handleLogoUpload(this)">
+                        <input type="file" id="logoInput" class="hidden" accept="image/*"
+                            onchange="handleLogoUpload(this)">
                     </div>
 
                     <!-- Brand Name -->
                     <div class="mb-4">
                         <label class="block text-sm font-semibold text-gray-700 mb-2" for="brandName">Brand Name</label>
-                        <input type="text" id="brandName" class="input-field w-full px-4 py-3 rounded-xl bg-gray-50 focus:outline-none" placeholder="e.g. Mumbai Chai Co.">
+                        <input type="text" id="brandName"
+                            class="input-field w-full px-4 py-3 rounded-xl bg-gray-50 focus:outline-none"
+                            placeholder="e.g. Mumbai Chai Co.">
                     </div>
 
                     <!-- Headline -->
                     <div class="mb-4">
-                        <label class="block text-sm font-semibold text-gray-700 mb-2" for="headline">Headline / Offer</label>
-                        <input type="text" id="headline" class="input-field w-full px-4 py-3 rounded-xl bg-gray-50 focus:outline-none" placeholder="e.g. 20% Off Your First Order!">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" for="headline">Headline /
+                            Offer</label>
+                        <input type="text" id="headline"
+                            class="input-field w-full px-4 py-3 rounded-xl bg-gray-50 focus:outline-none"
+                            placeholder="e.g. 20% Off Your First Order!">
                     </div>
 
                     <!-- QR Code Link (Optional) -->
@@ -521,18 +624,23 @@
                             QR Code Link <span class="text-gray-400 font-normal">(Optional)</span>
                         </label>
                         <div class="relative">
-                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i class="fas fa-link"></i></span>
-                            <input type="url" id="qrLink" class="input-field w-full pl-9 pr-4 py-3 rounded-xl bg-gray-50 focus:outline-none" placeholder="https://yourbrand.com">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><i
+                                    class="fas fa-link"></i></span>
+                            <input type="url" id="qrLink"
+                                class="input-field w-full pl-9 pr-4 py-3 rounded-xl bg-gray-50 focus:outline-none"
+                                placeholder="https://yourbrand.com">
                         </div>
                     </div>
 
                     <p class="text-xs text-red-500 mt-3 hidden" id="adError">Please fill in Brand Name and Headline.</p>
 
                     <div class="flex gap-3 mt-8">
-                        <button onclick="goToStep(3)" class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
+                        <button onclick="goToStep(3)"
+                            class="flex-1 py-4 rounded-xl font-semibold border-2 border-gray-200 text-gray-600 hover:border-primary hover:text-primary transition">
                             <i class="fas fa-arrow-left mr-2"></i> Back
                         </button>
-                        <button onclick="goToStep(5)" class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
+                        <button onclick="goToStep(5)"
+                            class="flex-[2] btn-primary text-white py-4 rounded-xl font-semibold shadow-lg">
                             Review Summary <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -545,7 +653,9 @@
             <div class="step-section" id="step5">
                 <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">5</div>
+                        <div
+                            class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                            5</div>
                         <div>
                             <h2 class="text-xl font-bold text-gray-900">Campaign Summary</h2>
                             <p class="text-sm text-gray-500">Review your details before launching</p>
@@ -581,7 +691,8 @@
                     </div>
 
                     <!-- Total Cost highlight -->
-                    <div class="bg-gradient-to-r from-primary/10 to-secondary/5 border border-primary/20 rounded-2xl p-5 mb-6 flex items-center justify-between">
+                    <div
+                        class="bg-gradient-to-r from-primary/10 to-secondary/5 border border-primary/20 rounded-2xl p-5 mb-6 flex items-center justify-between">
                         <div>
                             <p class="text-sm text-gray-500 font-medium">Total Campaign Cost</p>
                             <p class="text-3xl font-bold gradient-text" id="sum-total">₹0</p>
@@ -592,7 +703,8 @@
                     </div>
 
                     <!-- CTA -->
-                    <button onclick="launchCampaign()" class="w-full btn-primary text-white py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-3">
+                    <button onclick="launchCampaign()"
+                        class="w-full btn-primary text-white py-5 rounded-xl font-bold text-lg shadow-xl flex items-center justify-center gap-3">
                         🚀 Launch My Campaign
                     </button>
 
@@ -601,7 +713,8 @@
                         No long-term contracts &nbsp;•&nbsp; Quick setup &nbsp;•&nbsp; Support included
                     </p>
 
-                    <button onclick="goToStep(4)" class="w-full mt-3 py-3 rounded-xl font-semibold border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary transition text-sm">
+                    <button onclick="goToStep(4)"
+                        class="w-full mt-3 py-3 rounded-xl font-semibold border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary transition text-sm">
                         <i class="fas fa-pencil-alt mr-2"></i> Edit Details
                     </button>
                 </div>
@@ -611,14 +724,18 @@
             <!-- SUCCESS SCREEN                      -->
             <!-- ════════════════════════════════════ -->
             <div id="successScreen">
-                <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10 text-center relative overflow-hidden">
+                <div
+                    class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10 text-center relative overflow-hidden">
                     <div id="confettiContainer" class="absolute inset-0 pointer-events-none"></div>
 
-                    <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <div
+                        class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                         <i class="fas fa-rocket text-green-600 text-4xl"></i>
                     </div>
                     <h2 class="text-3xl font-bold text-gray-900 mb-3">Campaign Launched! 🎉</h2>
-                    <p class="text-gray-500 mb-8 max-w-sm mx-auto">Your campaign is live! Our team will reach out within <strong>24 hours</strong> to finalise placement and get your brand seen.</p>
+                    <p class="text-gray-500 mb-8 max-w-sm mx-auto">Your campaign is live! Our team will reach out within
+                        <strong>24 hours</strong> to finalise placement and get your brand seen.
+                    </p>
 
                     <div class="grid grid-cols-3 gap-4 max-w-xs mx-auto mb-8">
                         <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
@@ -635,7 +752,8 @@
                         </div>
                     </div>
 
-                    <a href="index.html" class="inline-flex items-center gap-2 btn-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg">
+                    <a href="index.html"
+                        class="inline-flex items-center gap-2 btn-primary text-white px-8 py-4 rounded-xl font-semibold shadow-lg">
                         <i class="fas fa-home"></i> Back to Home
                     </a>
                     <p class="text-xs text-gray-400 mt-4">No long-term contracts • Quick setup • Support included</p>
@@ -646,6 +764,24 @@
     </main>
 
     <script>
+            // ══════════════════════════════════════════════════════
+            // AUTH GUARD – redirects to login if no active session
+            // ══════════════════════════════════════════════════════
+            (function () {
+                const session = JSON.parse(localStorage.getItem('adquench_session') || 'null');
+                if (!session?.loggedIn) location.replace('login.html');
+            })();
+
+        // ── Session display ────────────────────────────────────
+        const _session = JSON.parse(localStorage.getItem('adquench_session') || '{}');
+        document.getElementById('navUserName').textContent = _session.name || 'User';
+
+        // ── Logout ─────────────────────────────────────────────
+        function logout() {
+            localStorage.removeItem('adquench_session');
+            location.replace('login.html');
+        }
+
         // ── State ──────────────────────────────────────────────
         const state = {
             package: null,
@@ -660,7 +796,6 @@
         let currentStep = 1;
 
         function goToStep(n) {
-            // Validate before advancing
             if (n > currentStep) {
                 if (!validateStep(currentStep)) return;
             }
@@ -714,7 +849,7 @@
             }
             if (step === 4) {
                 const brand = document.getElementById('brandName').value.trim();
-                const head  = document.getElementById('headline').value.trim();
+                const head = document.getElementById('headline').value.trim();
                 if (!brand || !head) {
                     document.getElementById('adError').classList.remove('hidden');
                     return false;
@@ -762,12 +897,6 @@
             document.getElementById('durError').classList.add('hidden');
         }
 
-        // ── Step 3: Budget ─────────────────────────────────────
-        function updateBudget(val) {
-            state.budget = parseInt(val);
-            document.getElementById('budgetDisplay').textContent = '₹' + parseInt(val).toLocaleString('en-IN');
-        }
-
         // ── Step 4: Logo Upload ────────────────────────────────
         function handleLogoUpload(input) {
             if (!input.files || !input.files[0]) return;
@@ -786,14 +915,11 @@
             e.preventDefault();
             document.getElementById('uploadZone').classList.remove('dragover');
             const files = e.dataTransfer.files;
-            if (files && files[0]) {
-                const fakeInput = { files };
-                handleLogoUpload(fakeInput);
-            }
+            if (files && files[0]) handleLogoUpload({ files });
         }
 
         // Input error clear on typing
-        ['brandName','headline'].forEach(id => {
+        ['brandName', 'headline'].forEach(id => {
             document.getElementById(id).addEventListener('input', () => {
                 document.getElementById('adError').classList.add('hidden');
             });
@@ -805,57 +931,50 @@
             const totalCost = state.packagePrice * months;
             const totalReach = state.reach * 30 * months;
 
-            document.getElementById('sum-package').textContent   = state.packageLabel || '—';
+            document.getElementById('sum-package').textContent = state.packageLabel || '—';
             document.getElementById('sum-locations').textContent = state.locations.join(', ') || '—';
-            document.getElementById('sum-duration').textContent  = state.duration ? state.duration + ' Month' + (state.duration > 1 ? 's' : '') : '—';
-            document.getElementById('sum-brand').textContent     = document.getElementById('brandName').value || '—';
-            document.getElementById('sum-headline').textContent  = document.getElementById('headline').value || '—';
-            document.getElementById('sum-reach').textContent     = '~' + totalReach.toLocaleString('en-IN') + '+ views';
-            document.getElementById('sum-total').textContent     = '₹' + totalCost.toLocaleString('en-IN');
+            document.getElementById('sum-duration').textContent = state.duration ? state.duration + ' Month' + (state.duration > 1 ? 's' : '') : '—';
+            document.getElementById('sum-brand').textContent = document.getElementById('brandName').value || '—';
+            document.getElementById('sum-headline').textContent = document.getElementById('headline').value || '—';
+            document.getElementById('sum-reach').textContent = '~' + totalReach.toLocaleString('en-IN') + '+ views';
+            document.getElementById('sum-total').textContent = '₹' + totalCost.toLocaleString('en-IN');
         }
 
-        // ── Launch Campaign ────────────────────────────────────
+        // ══════════════════════════════════════════════════════
+        // WHATSAPP LAUNCH
+        // ─────────────────────────────────────────────────────
+        // 📌 TO CHANGE THE WHATSAPP NUMBER:
+        //    Find the line below that starts with: const WA_NUMBER
+        //    Replace '918850008046' with your number (country code + digits, no + or spaces)
+        // ══════════════════════════════════════════════════════
+        const WA_NUMBER = '919000000000'; // ← Change this to your WhatsApp Business number
+
         function launchCampaign() {
             const months = state.duration || 1;
             const totalCost = state.packagePrice * months;
             const totalReach = state.reach * 30 * months;
+            const session = JSON.parse(localStorage.getItem('adquench_session') || '{}');
+            const qrLink = document.getElementById('qrLink').value.trim() || 'N/A';
 
-            // Fill success screen
-            document.getElementById('sc-reach').textContent = (totalReach / 1000).toFixed(0) + 'K+';
-            document.getElementById('sc-dur').textContent   = months + ' Mo.';
-            document.getElementById('sc-cost').textContent  = '₹' + (totalCost / 1000).toFixed(0) + 'K';
+            const msg = [
+                '🚀 *New AdQuench Campaign Request*',
+                '',
+                '👤 *Name:* ' + (session.name || 'N/A'),
+                '📧 *Email:* ' + (session.email || 'N/A'),
+                '📦 *Package:* ' + state.packageLabel,
+                '📍 *Locations:* ' + state.locations.join(', '),
+                '⏱ *Duration:* ' + months + ' Month' + (months > 1 ? 's' : ''),
+                '💰 *Total Cost:* ₹' + totalCost.toLocaleString('en-IN'),
+                '🏷 *Brand Name:* ' + document.getElementById('brandName').value,
+                '📣 *Headline:* ' + document.getElementById('headline').value,
+                '🔗 *QR Link:* ' + qrLink,
+                '📊 *Est. Reach:* ~' + totalReach.toLocaleString('en-IN') + '+ views',
+            ].join('\n');
 
-            // Hide step indicators & steps
-            document.getElementById('stepIndicator').style.display = 'none';
-            document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
-
-            // Show success
-            const sc = document.getElementById('successScreen');
-            sc.classList.add('active');
-
-            // Confetti
-            spawnConfetti();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ── Confetti ───────────────────────────────────────────
-        function spawnConfetti() {
-            const container = document.getElementById('confettiContainer');
-            const colors = ['#547792', '#1A3263', '#10b981', '#f59e0b', '#ec4899', '#6366f1'];
-            for (let i = 0; i < 28; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'confetti-dot';
-                dot.style.left = Math.random() * 100 + '%';
-                dot.style.top = (Math.random() * 30) + '%';
-                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
-                dot.style.animationDelay = (Math.random() * 0.8) + 's';
-                dot.style.animationDuration = (1 + Math.random()) + 's';
-                dot.style.width = (8 + Math.random() * 8) + 'px';
-                dot.style.height = (8 + Math.random() * 8) + 'px';
-                container.appendChild(dot);
-                setTimeout(() => dot.remove(), 2500);
-            }
+            const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+            window.open(url, '_blank');
         }
     </script>
 </body>
+
 </html>

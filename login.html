@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to AdQuench to manage your advertising campaigns.">
+    <title>Sign In – AdQuench</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#547792', light: 'rgba(84,119,146,0.1)', dark: '#1A3263' },
+                        secondary: '#1A3263',
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body { font-family: 'Inter', sans-serif; }
+
+        .auth-bg {
+            background: linear-gradient(135deg, #547792 0%, #1A3263 100%);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            color: #6b7280;
+            cursor: pointer;
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, #547792, #1A3263);
+            color: white;
+            box-shadow: 0 6px 16px rgba(84,119,146,0.3);
+        }
+
+        .form-panel {
+            display: none;
+            animation: fadeUp 0.35s ease;
+        }
+        .form-panel.active { display: block; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 13px 16px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            background: #f9fafb;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            outline: none;
+        }
+        .input-field:focus {
+            border-color: #547792;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(84,119,146,0.12);
+        }
+        .input-field.error { border-color: #ef4444; background: #fff5f5; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #547792, #1A3263);
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(84,119,146,0.3);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(84,119,146,0.4);
+        }
+        .btn-submit:active { transform: translateY(0); }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-msg.show { display: block; }
+
+        .global-error {
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            color: #dc2626;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 16px;
+        }
+        .global-error.show { display: flex; align-items: center; gap: 8px; }
+
+        .global-success {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            color: #15803d;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            display: none;
+            margin-bottom: 16px;
+        }
+        .global-success.show { display: flex; align-items: center; gap: 8px; }
+
+        /* Password toggle */
+        .pass-wrap { position: relative; }
+        .pass-wrap .toggle-eye {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+        .pass-wrap .toggle-eye:hover { color: #547792; }
+
+        /* Floating blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            animation: blobFloat 8s ease-in-out infinite;
+        }
+        @keyframes blobFloat {
+            0%,100% { transform: translateY(0) scale(1); }
+            50%      { transform: translateY(-30px) scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="auth-bg relative flex items-center justify-center px-4 py-12 overflow-hidden">
+
+    <!-- Decorative blobs -->
+    <div class="blob w-80 h-80 bg-white top-0 left-0" style="animation-delay:0s"></div>
+    <div class="blob w-64 h-64 bg-white bottom-0 right-0" style="animation-delay:3s"></div>
+
+    <div class="w-full max-w-md relative z-10">
+
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30 shadow-lg">
+                    <i class="fas fa-tint text-white text-2xl"></i>
+                </div>
+                <span class="text-3xl font-bold text-white">AdQuench</span>
+            </a>
+            <p class="text-white/80 text-sm">Your advertising journey starts here</p>
+        </div>
+
+        <!-- Card -->
+        <div class="glass-card rounded-3xl shadow-2xl p-8">
+
+            <!-- Tab switcher -->
+            <div class="flex gap-2 bg-gray-100 p-1.5 rounded-2xl mb-7">
+                <div class="tab-btn active" id="tab-login" onclick="switchTab('login')">Sign In</div>
+                <div class="tab-btn" id="tab-signup" onclick="switchTab('signup')">Create Account</div>
+            </div>
+
+            <!-- ── LOGIN PANEL ── -->
+            <div class="form-panel active" id="panel-login">
+                <div class="global-error" id="login-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="login-error-text">Invalid credentials.</span>
+                </div>
+                <div class="global-success" id="login-success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Signing you in…</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
+                        <input type="email" id="login-email" class="input-field" placeholder="you@example.com" autocomplete="email">
+                        <p class="error-msg" id="err-login-email">Please enter a valid email.</p>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-1.5">
+                            <label class="text-sm font-semibold text-gray-700">Password</label>
+                        </div>
+                        <div class="pass-wrap">
+                            <input type="password" id="login-password" class="input-field" placeholder="Your password" autocomplete="current-password">
+                            <i class="fas fa-eye toggle-eye" onclick="togglePass('login-password', this)"></i>
+                        </div>
+                        <p class="error-msg" id="err-login-password">Please enter your password.</p>
+                    </div>
+                    <button class="btn-submit" onclick="doLogin()">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Sign In
+                    </button>
+                </div>
+
+                <p class="text-center text-sm text-gray-500 mt-5">
+                    No account?
+                    <button onclick="switchTab('signup')" class="text-primary font-semibold hover:underline">Create one free</button>
+                </p>
+            </div>
+
+            <!-- ── SIGNUP PANEL ── -->
+            <div class="form-panel" id="panel-signup">
+                <div class="global-error" id="signup-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="signup-error-text">Something went wrong.</span>
+                </div>
+                <div class="global-success" id="signup-success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Account created! Redirecting…</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Full Name</label>
+                        <input type="text" id="signup-name" class="input-field" placeholder="Rahul Sharma" autocomplete="name">
+                        <p class="error-msg" id="err-signup-name">Please enter your name.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
+                        <input type="email" id="signup-email" class="input-field" placeholder="you@example.com" autocomplete="email">
+                        <p class="error-msg" id="err-signup-email">Please enter a valid email.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Password</label>
+                        <div class="pass-wrap">
+                            <input type="password" id="signup-password" class="input-field" placeholder="Min. 6 characters" autocomplete="new-password">
+                            <i class="fas fa-eye toggle-eye" onclick="togglePass('signup-password', this)"></i>
+                        </div>
+                        <p class="error-msg" id="err-signup-password">Password must be at least 6 characters.</p>
+                    </div>
+                    <button class="btn-submit" onclick="doSignup()">
+                        <i class="fas fa-user-plus mr-2"></i> Create Account
+                    </button>
+                </div>
+
+                <p class="text-center text-sm text-gray-500 mt-5">
+                    Already have an account?
+                    <button onclick="switchTab('login')" class="text-primary font-semibold hover:underline">Sign in</button>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Back link -->
+        <p class="text-center text-white/70 text-sm mt-6">
+            <a href="index.html" class="hover:text-white transition">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Home
+            </a>
+        </p>
+
+    </div>
+</div>
+
+<script>
+    // ── Redirect if already logged in ──────────────────────────
+    (function() {
+        const session = JSON.parse(localStorage.getItem('adquench_session') || 'null');
+        if (session?.loggedIn) location.replace('advertise.html');
+    })();
+
+    // ── Tab switching ──────────────────────────────────────────
+    function switchTab(tab) {
+        ['login','signup'].forEach(t => {
+            document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+            document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+        });
+        clearErrors();
+    }
+
+    // ── Password toggle ───────────────────────────────────────
+    function togglePass(inputId, icon) {
+        const input = document.getElementById(inputId);
+        const show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        icon.className = 'fas toggle-eye ' + (show ? 'fa-eye-slash' : 'fa-eye');
+    }
+
+    // ── Storage helpers ───────────────────────────────────────
+    function getUsers() {
+        return JSON.parse(localStorage.getItem('adquench_users') || '[]');
+    }
+    function saveUsers(users) {
+        localStorage.setItem('adquench_users', JSON.stringify(users));
+    }
+    function createSession(user) {
+        localStorage.setItem('adquench_session', JSON.stringify({
+            name: user.name,
+            email: user.email,
+            loggedIn: true
+        }));
+    }
+
+    // ── Field helpers ─────────────────────────────────────────
+    function showFieldError(id, show) {
+        const el = document.getElementById(id);
+        const input = document.getElementById(id.replace('err-', ''));
+        el.classList.toggle('show', show);
+        if (input) input.classList.toggle('error', show);
+    }
+    function clearErrors() {
+        document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('show'));
+        document.querySelectorAll('.input-field').forEach(i => i.classList.remove('error'));
+        document.querySelectorAll('.global-error,.global-success').forEach(e => e.classList.remove('show'));
+    }
+    function showGlobalError(prefix, msg) {
+        const el = document.getElementById(prefix + '-error');
+        document.getElementById(prefix + '-error-text').textContent = msg;
+        el.classList.add('show');
+    }
+    function showGlobalSuccess(prefix) {
+        document.getElementById(prefix + '-success').classList.add('show');
+    }
+
+    // ── Login ─────────────────────────────────────────────────
+    function doLogin() {
+        clearErrors();
+        const email    = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        let valid = true;
+
+        if (!email || !/\S+@\S+\.\S+/.test(email)) { showFieldError('err-login-email', true);    valid = false; }
+        if (!password)                               { showFieldError('err-login-password', true); valid = false; }
+        if (!valid) return;
+
+        const users = getUsers();
+        const user  = users.find(u => u.email === email && u.password === password);
+        if (!user) { showGlobalError('login', 'Incorrect email or password. Please try again.'); return; }
+
+        createSession(user);
+        showGlobalSuccess('login');
+        setTimeout(() => location.replace('advertise.html'), 800);
+    }
+
+    // ── Sign Up ───────────────────────────────────────────────
+    function doSignup() {
+        clearErrors();
+        const name     = document.getElementById('signup-name').value.trim();
+        const email    = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+        let valid = true;
+
+        if (!name)                                    { showFieldError('err-signup-name', true);     valid = false; }
+        if (!email || !/\S+@\S+\.\S+/.test(email))   { showFieldError('err-signup-email', true);    valid = false; }
+        if (password.length < 6)                      { showFieldError('err-signup-password', true); valid = false; }
+        if (!valid) return;
+
+        const users = getUsers();
+        if (users.find(u => u.email === email)) {
+            showGlobalError('signup', 'An account with this email already exists.');
+            return;
+        }
+
+        const newUser = { name, email, password };
+        users.push(newUser);
+        saveUsers(users);
+        createSession(newUser);
+        showGlobalSuccess('signup');
+        setTimeout(() => location.replace('advertise.html'), 900);
+    }
+
+    // ── Enter key support ─────────────────────────────────────
+    document.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        const activePanel = document.querySelector('.form-panel.active').id;
+        if (activePanel === 'panel-login')  doLogin();
+        if (activePanel === 'panel-signup') doSignup();
+    });
+</script>
+</body>
+</html>
